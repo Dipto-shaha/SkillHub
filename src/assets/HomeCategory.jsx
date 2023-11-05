@@ -1,23 +1,33 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import SingleJob from './SingleJob';
 const HomeCategory = () => {
-    const [jobs,setJobs]=useState(null);
+    const [loading,setLoading]=useState(false);
+    const [web,setWeb]=useState(null);
+    const [digital,setDigital]=useState(null);
+    const [graphics,setGrapics]=useState(null);
     useEffect(()=>{
       fetch('http://localhost:5000/job')
       .then(res => res.json())
       .then(data=> {
-        console.log(data)
-        setJobs(data)}
+        let newData=data.filter((job) => job.category == "Web Development");
+        setWeb(newData);
+        newData=data.filter((job) => job.category == "Digital Marketing");
+        setDigital(newData);
+        newData=data.filter((job) => job.category == "Graphics Design");
+        setGrapics(newData);
+        setLoading(true);
+      }
+
         );
     },[]);
-    if(!jobs)
+    if(!loading)
       return (<><span className="loading loading-dots loading-md"></span>
       <span className="loading loading-dots loading-lg"></span></>)
     return (
      <>
      <div>
-        
      </div>
       <Tabs>
       <TabList>
@@ -27,50 +37,25 @@ const HomeCategory = () => {
       </TabList>
       <TabPanel >
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20'>
-        {
-        jobs.filter((job) => job.category === "Web Development")
-          .map((job, index) => (
-            <div key={index}>
-              <h3>{job.jobTitle}</h3>
-              <p><strong>Deadline:</strong> {job.deadline}</p>
-              <p><strong>Price Range:</strong> {job.priceRange}</p>
-              <p><strong>Description:</strong> {job.shortDescription}</p>
-              <p><strong>Email:</strong> {job.email}</p>
-              <button>Bid Now</button>
-            </div>
-          ))}
+      {
+        web.map(job => {
+          return <SingleJob key={job._id} job={job}></SingleJob>
+      })
+      }
+      </div>
+      </TabPanel>
+      <TabPanel>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20'>
+      {
+        digital.map(job => {return <SingleJob key={job._id} job={job}></SingleJob>})
+      }
       </div>
       </TabPanel>
       <TabPanel>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20'>
         {
-        jobs.filter((job) => job.category === "Digital Marketing")
-          .map((job, index) => (
-            <div key={index}>
-              <h3>{job.jobTitle}</h3>
-              <p><strong>Deadline:</strong> {job.deadline}</p>
-              <p><strong>Price Range:</strong> {job.priceRange}</p>
-              <p><strong>Description:</strong> {job.shortDescription}</p>
-              <p><strong>Email:</strong> {job.email}</p>
-              <button>Bid Now</button>
-            </div>
-          ))}
-      </div>
-      </TabPanel>
-      <TabPanel>
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20'>
-        {
-        jobs.filter((job) => job.category === "Graphics Design")
-          .map((job, index) => (
-            <div key={index}>
-              <h3>{job.jobTitle}</h3>
-              <p><strong>Deadline:</strong> {job.deadline}</p>
-              <p><strong>Price Range:</strong> {job.priceRange}</p>
-              <p><strong>Description:</strong> {job.shortDescription}</p>
-              <p><strong>Email:</strong> {job.email}</p>
-              <button >Bid Now</button>
-            </div>
-          ))}
+          graphics.map(job => {return <SingleJob key={job._id} job={job}></SingleJob>})
+        }
       </div>
       </TabPanel>
     </Tabs>
