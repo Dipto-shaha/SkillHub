@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContest } from "../Context";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 const BidRequet = () => {
   const [info, setinfo] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -84,6 +85,9 @@ const BidRequet = () => {
           </tbody>
         </table>
       </div>
+      <Helmet>
+                <title>SkillHub | Bid Request</title>
+      </Helmet>
     </div>
   );
 };

@@ -18,6 +18,7 @@ import Updatejob from './assets/PrivateRoute/Updatejob.jsx';
 import JobDetails from './assets/PrivateRoute/JobDetails.jsx';
 import MyBid from './assets/PrivateRoute/MyBid.jsx';
 import BidRequet from './assets/PrivateRoute/BidRequet.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -71,8 +72,10 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+      <HelmetProvider>
       <Context>
         <RouterProvider router={router} />
       </Context>
+      </HelmetProvider>
   </React.StrictMode>,
 )

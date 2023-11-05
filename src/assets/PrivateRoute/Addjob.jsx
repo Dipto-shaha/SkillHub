@@ -5,6 +5,7 @@ import { AuthContest } from "../Context";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 const Addjob = () => {
     const {user}=useContext(AuthContest);
     const [startDate, setStartDate] = useState(new Date());
@@ -25,7 +26,7 @@ const Addjob = () => {
         const description = form.get("description");
         const deadline = startDate.toISOString().slice(0, 10);
 
-        const job = { email,jobTitle: title,category: Category, mx_price, mn_price,shortDescription: description,deadline };
+        const job = { email,jobTitle: title,category: Category,priceRange:`$${mn_price} - $${mx_price}`,shortDescription: description,deadline };
         console.log(job);
         fetch("http://localhost:5000/addjob",
           {
@@ -115,7 +116,11 @@ const Addjob = () => {
             </button>
           </div>
         </form>
+        <Helmet>
+                <title>SkillHub | AddJob</title>
+        </Helmet>
       </div>
+
     );
 };
 

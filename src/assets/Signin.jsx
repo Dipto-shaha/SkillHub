@@ -4,6 +4,7 @@ import { AuthContest } from "./Context";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 export const ProfileContext= createContext(null);
 
 const Signin = () => {
@@ -129,6 +130,9 @@ const Signin = () => {
             pauseOnHover
             theme="dark"
         />
+        <Helmet>
+                <title>SkillHub | SignIn</title>
+        </Helmet>
         </div>
     );
 };

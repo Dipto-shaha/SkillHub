@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContest } from "../Context";
+import { Helmet } from "react-helmet-async";
 
 const MyBid = () => {
   const [info, setinfo] = useState([]);
@@ -46,6 +47,9 @@ const MyBid = () => {
           </tbody>
         </table>
       </div>
+      <Helmet>
+                <title>SkillHub | My Bid</title>
+        </Helmet>
     </div>
   );
 };

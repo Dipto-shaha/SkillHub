@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const Updatejob = () => {
     const {_id,email,jobTitle,category, mx_price, mn_price,shortDescription,deadline}=useLoaderData(); 
     console.log(category,typeof(deadline));
@@ -24,7 +25,7 @@ const Updatejob = () => {
         const description = form.get("description");
         const deadline = startDate.toISOString().slice(0, 10);
 
-        const job = { email,jobTitle: title,category: Category, mx_price, mn_price,shortDescription: description,deadline };
+        const job = { email,jobTitle: title,category: Category, priceRange:`$${mn_price} - $${mx_price}`,shortDescription: description,deadline };
         console.log(job);
         fetch(`http://localhost:5000/updatejob/${_id}`,
           {
@@ -116,6 +117,9 @@ const Updatejob = () => {
             </button>
           </div>
         </form>
+        <Helmet>
+                <title>SkillHub | UpdateJob</title>
+        </Helmet>
       </div>
     );
 };
