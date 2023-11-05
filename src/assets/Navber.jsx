@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,14 +61,20 @@ const Navber = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-            <li>
-              <NavLink to='/'>Home</NavLink> 
+        <li>
+              <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-              <NavLink to='/addproduct'>Add Product</NavLink>
+              <NavLink to='/addjob'>Add job</NavLink>
             </li>
             <li>
-              <NavLink to='/mycart'> My Cart</NavLink>
+              <NavLink to='/myjob'> My posted jobs</NavLink>
+            </li>
+            <li>
+              <NavLink to='/mybid'>My Bids</NavLink>
+            </li>
+            <li>
+              <NavLink to='/myreq'>Bid Requests</NavLink>
             </li>
         </ul>
       </div>
@@ -91,8 +97,6 @@ const Navber = () => {
           
         </div>
     </div>
-    <Outlet >
-    </Outlet>
     <ToastContainer
         position="bottom-center"
         autoClose={3000}

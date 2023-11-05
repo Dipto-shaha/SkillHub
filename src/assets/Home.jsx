@@ -1,8 +1,14 @@
+import { Outlet } from "react-router-dom";
+import Navber from "./Navber";
+import Footer from "./Footer";
 
 const Home = () => {
     return (
-        <div>
-        </div>
+        <>
+            <Navber></Navber>
+            <Outlet></Outlet>
+            <Footer></Footer>
+        </>
     );
 };
 
