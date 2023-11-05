@@ -16,6 +16,8 @@ import Addjob from './assets/PrivateRoute/Addjob.jsx';
 import MyPostedJob from './assets/PrivateRoute/MyPostedJob.jsx';
 import Updatejob from './assets/PrivateRoute/Updatejob.jsx';
 import JobDetails from './assets/PrivateRoute/JobDetails.jsx';
+import MyBid from './assets/PrivateRoute/MyBid.jsx';
+import BidRequet from './assets/PrivateRoute/BidRequet.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,11 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/mybid',
-        element:<PrivateRoute></PrivateRoute>
+        element:<PrivateRoute><MyBid></MyBid></PrivateRoute>
       },
       {
         path:'/myreq',
-        element:<PrivateRoute></PrivateRoute>
+        element:<PrivateRoute><BidRequet></BidRequet></PrivateRoute>
       },
       {
         path:'/job/:id',

@@ -22,7 +22,9 @@ const Updatejob = () => {
         const mx_price = form.get("mx_price");
         const mn_price = form.get("mn_price");
         const description = form.get("description");
-        const job = { email,jobTitle: title,category: Category, mx_price, mn_price,shortDescription: description,deadline:startDate };
+        const deadline = startDate.toISOString().slice(0, 10);
+
+        const job = { email,jobTitle: title,category: Category, mx_price, mn_price,shortDescription: description,deadline };
         console.log(job);
         fetch(`http://localhost:5000/updatejob/${_id}`,
           {

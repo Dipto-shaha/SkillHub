@@ -18,7 +18,11 @@ const JobDetails = () => {
         const form = new FormData(e.currentTarget);
         console.log(form);
         const price = form.get("price");
-        const offer = {jobid:_id, buyerEmail:email,userEmail:user.email,price,deadline:startDate };
+        const deadline = startDate.toISOString().slice(0, 10);
+
+        const offer = {jobid:_id, buyerEmail:email,userEmail:user.email,price,deadline,jobTitle,
+            status : "Pending"
+         };
         console.log(offer);
         fetch("http://localhost:5000/bidjob",
           {
