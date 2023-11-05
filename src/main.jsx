@@ -14,6 +14,7 @@ import Home from './assets/Home.jsx';
 import HomeCategory from './assets/HomeCategory.jsx';
 import Addjob from './assets/PrivateRoute/Addjob.jsx';
 import MyPostedJob from './assets/PrivateRoute/MyPostedJob.jsx';
+import Updatejob from './assets/PrivateRoute/Updatejob.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,13 @@ const router = createBrowserRouter([
         path:'/jobdetails/:id',
         element:<PrivateRoute></PrivateRoute>
       },
+      {
+        path:'/updatejob/:id',
+        element:<PrivateRoute><Updatejob></Updatejob></PrivateRoute>,
+        //loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`)
+       loader: () => fetch(`http://localhost:5000/job/65477f4f8a72a26f87af1bea`)
+
+      }
 
     ]
   },
