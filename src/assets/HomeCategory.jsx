@@ -89,9 +89,9 @@ const HomeCategory = () => {
     );
   return (
     <>
-      <div className="flex mb-10">
-        <div className="w-3/5 p-5">
-          <p className="mx-2 text-6xl font-bold my-5">
+      <div className="flex mb-10 flex-col-reverse lg:flex-row">
+        <div className="lg:w-3/5 p-5">
+          <p className="mx-2 lg:text-6xl  text-4xl font-bold my-5">
             Where Ideas
             <span className="text-[#ff715b]"> Come to Life</span>
           </p>
@@ -106,7 +106,7 @@ const HomeCategory = () => {
           </p>
           <button className="btn bg-[#ff715b] text-[#FFF]">Explore</button>
         </div>
-        <div className="w-2/5 ">
+        <div className="lg:w-2/5 ">
           <img
             className="rounded-lg"
             src="https://i.ibb.co/kSTKt9F/top-view-hands-typing-keyboard-23-2149476770.jpg"

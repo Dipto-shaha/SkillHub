@@ -6,6 +6,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import "./formDesign.css";
+
 const JobDetails = () => {
   const { _id, jobTitle, deadline, priceRange, shortDescription, email } =
     useLoaderData();
@@ -48,8 +50,9 @@ const JobDetails = () => {
   };
   return (
     <>
-      <div>
-        <h3>{jobTitle}</h3>
+      <div className="bg-[#f6f9fe] p-5 rounded-xl">
+      <p className="text-center font-medium text-3xl lg:text-5xl ">Job Details</p>
+        <h3 className="mt-5 text-center font-bold text-xl lg:text-3xl">{jobTitle}</h3>
         <p>
           <strong>Deadline:</strong> {deadline}
         </p>
@@ -63,32 +66,44 @@ const JobDetails = () => {
           <strong>Email:</strong> {email}
         </p>
       </div>
-      <div className="gird grid-cols-1 lg:grid-cols-2 ">
-        <form onSubmit={handleBid}>
-          <div>
-            <label>Buyer Email</label>
-            <input type="email" name="email" value={email} />
-          </div>
-          <div>
-            <label>Your Email</label>
-            <input type="email" name="email" value={user.email} />
-          </div>
-          <div>
-            <label>Your Proposed Deadline </label>
-            <DatePicker
-              selected={startDate}
-              minDate={today}
-              onChange={(date) => setStartDate(date)}
-            />
-          </div>
-          <div>
-            <label>Offer Price</label>
-            <input name="price" type="text" placeholder="Job Price" required />
-          </div>
-          <button disabled={user.email == email ? "disabled" : ""}>
-            Bid Now
-          </button>
-        </form>
+      <div className="">
+      <div className="bg-[#f6f9fe]  mx-auto px-10    py-5 lg:w-1/2 mt-10 rounded-lg border-2">
+        <p className="text-center text-5xl font-semibold">Your Offer</p>
+        <div className="mt-10">
+          <form onSubmit={handleBid} className="designforForm">
+            <div>
+              <label>Buyer Email</label>
+              <input type="email" name="email" value={email} />
+            </div>
+            <div>
+              <label>Your Email</label>
+              <input type="email" name="email" value={user.email} />
+            </div>
+            <div>
+              <label>Offer Price</label>
+              <input
+                name="price"
+                type="text"
+                placeholder="Job Price"
+                required
+              />
+            </div>
+            <div>
+              <label>Your Proposed Deadline </label>
+              <DatePicker
+                selected={startDate}
+                minDate={today}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
+            <div className="flex items-center">
+              <button disabled={user.email == email ? "disabled" : ""} className=" mx-auto mt-5 btn bg-[#ff715b] text-[#FFF]">
+                Bid Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
       </div>
       <Helmet>
         <title>SkillHub | Job Details</title>

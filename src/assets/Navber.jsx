@@ -59,7 +59,7 @@ const Navber = () => {
           </ul>
         </div>
         <img className="w-12 h-8 lg:w-20 lg:h-20 rounded-3xl"src='https://i.ibb.co/WpgYsv0/logo.jpg'></img>
-        <p className="mx-2 text-4xl font-bold">
+        <p className="mx-2 md:text-4xl font-bold">
             Skill<span className="text-[#ff715b]">Hub</span>
           </p>
       </div>

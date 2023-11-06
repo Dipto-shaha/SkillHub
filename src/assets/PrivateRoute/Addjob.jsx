@@ -7,12 +7,15 @@ import "./formDesign.css";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 const Addjob = () => {
     const {user}=useContext(AuthContest);
     const [startDate, setStartDate] = useState(new Date());
     const today = new Date();
     today.setHours(0, 0, 0, 0); 
     console.log(user);
+    const navigate = useNavigate();
+
     const handleAddJob = (e) => {
       
         e.preventDefault();
@@ -41,11 +44,12 @@ const Addjob = () => {
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
-            toast.success("Product Added Successfully");
+            toast.success("Job Added Successfully");
+            navigate('/myjob')
           });
       };
     return (
-      <div className="bg-[#f6f9fe] lg:mx-20 mx-10 py-10 my-10 lg:px-20 px-10 rounded-lg">
+      <div className="bg-[#f6f9fe] lg:mx-20 mx-5 py-10 my-10 lg:px-20 px-10 rounded-lg">
         <p className="text-center text-3xl font-bold mb-10">
           Add a New Job
         </p>
@@ -68,7 +72,7 @@ const Addjob = () => {
               />
             </div>
             <div>
-              <label>Maximum Price</label>
+              <label>Minimum  Price</label>
               <input
                 name="mn_price"
                 type="text"
@@ -77,7 +81,7 @@ const Addjob = () => {
               />
             </div>
             <div>
-              <label>Minimum  Price</label>
+              <label>Maximum Price</label>
               <input
                 name="mx_price"
                 type="text"

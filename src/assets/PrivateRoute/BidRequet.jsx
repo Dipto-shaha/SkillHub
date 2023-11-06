@@ -48,7 +48,7 @@ const BidRequet = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table border border-[#7ec6d5] rounded-xl">
           {/* head */}
           <thead>
             <tr>
@@ -68,17 +68,21 @@ const BidRequet = () => {
                   <td>{item.userEmail}</td>
                   <td>{item.deadline}</td>
                   <td>{item.status}</td>
-                  <td className="flex">
+                  {
+                    item.status =='Pending' && <td className="flex">
                     <button
-                      className="mx-2"
+                      className="mx-2 btn bg-[#42f042] text-[#FFF]"
                       onClick={() => handleDecision(item._id, true)}
                     >
                       Accept
                     </button>
-                    <button onClick={() => handleDecision(item._id, false)}>
+                    <button onClick={() => handleDecision(item._id, false)}
+                     className=" btn bg-[#ff715b] text-[#FFF]"
+                    >
                       Reject
                     </button>
                   </td>
+                  }
                 </tr>
               );
             })}

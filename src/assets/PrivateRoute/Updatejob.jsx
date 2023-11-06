@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
@@ -7,12 +7,16 @@ import { Helmet } from "react-helmet-async";
 import "./formDesign.css";
 
 const Updatejob = () => {
-    const {_id,email,jobTitle,category, mx_price, mn_price,shortDescription,deadline}=useLoaderData(); 
+    const {_id,email,jobTitle,category,priceRange ,shortDescription,deadline}=useLoaderData(); 
     console.log(category,typeof(deadline));
     const dateObject = new Date(deadline);
-
+    const regex = /\$(\d+(\.\d+)?) - \$(\d+(\.\d+)?)/;
+    const match = priceRange.match(regex);
+    const mn_price = parseFloat(match[1]);
+    const mx_price = parseFloat(match[3]);
     const [startDate, setStartDate] = useState(dateObject);
     const today = new Date();
+    const navigate=useNavigate();
     today.setHours(0, 0, 0, 0); 
     const handleAddJob = (e) => { 
         e.preventDefault();
@@ -42,6 +46,7 @@ const Updatejob = () => {
           .then((result) => {
             console.log(result);
             toast.success("Job Updated Successfully");
+            navigate('/myjob');
           });
       };
     return (
@@ -69,22 +74,22 @@ const Updatejob = () => {
               />
             </div>
             <div>
-              <label>Maximum Price</label>
-              <input
-                name="mx_price"
-                type="text"
-                placeholder="Job Minimum Price"
-                defaultValue={mx_price}
-                required
-              />
-            </div>
-            <div>
               <label>Minimum  Price</label>
               <input
                 name="mn_price"
                 type="text"
                 placeholder="Job Minimum Price"
                 defaultValue={mn_price}
+                required
+              />
+            </div>
+            <div>
+              <label>Maximum Price</label>
+              <input
+                name="mx_price"
+                type="text"
+                placeholder="Job Minimum Price"
+                defaultValue={mx_price}
                 required
               />
             </div>

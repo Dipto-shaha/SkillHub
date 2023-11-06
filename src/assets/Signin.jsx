@@ -23,16 +23,16 @@ const Signin = () => {
             toast.error("Passwords must be at least 6 characters in length");
             return;
         }
-        if(!password.match(/.*[A-Z].*/))
-        {
-            toast.error("Passwords must have Capital letter");
-            return;
-        }
-        if(!password.match(/[\W_]/g))
-        {
-            toast.error("Passwords must have special Character");
-            return;
-        }
+        // if(!password.match(/.*[A-Z].*/))
+        // {
+        //     toast.error("Passwords must have Capital letter");
+        //     return;
+        // }
+        // if(!password.match(/[\W_]/g))
+        // {
+        //     toast.error("Passwords must have special Character");
+        //     return;
+        // }
         createUser(email,password)
             .then(result =>{console.log(result.user );
                 toast.success("Registration Successful");

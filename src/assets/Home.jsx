@@ -10,7 +10,7 @@ const Home = () => {
                 <title>SkillHub | Home</title>
             </Helmet>
             <Navber></Navber>
-            <div className="mx-20 my-5">
+            <div className="mx-5 lg:mx-20 my-5">
                 <Outlet ></Outlet>
             </div>
             <Footer></Footer>

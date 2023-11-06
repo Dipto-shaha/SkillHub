@@ -46,24 +46,35 @@ const MyPostedJob = () => {
     );
   }
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 rounded-lg">
       {jobs.map((job, index) => (
-        <div key={index}>
-          <h3>{job.jobTitle}</h3>
-          <p>
+        <div key={index} className="bg-[#f6f9fe] p-10 space-y-2">
+          <h3 className="text-3xl lg:text-5xl font-bold text-center ">
+            {job.jobTitle}
+          </h3>
+          <p className="block text-sm">Job Description</p>
+          <p className="text-xl">{job.shortDescription}</p>
+          <p className="">
             <strong>Deadline:</strong> {job.deadline}
           </p>
           <p>
             <strong>Price Range:</strong> {job.priceRange}
           </p>
-          <p>
-            <strong>Description:</strong> {job.shortDescription}
-          </p>
+          
           <p>
             <strong>Email:</strong> {job.email}
           </p>
-          <Link to={`/updatejob/${job._id}`}>Update</Link>
-          <button onClick={() => handleDelete(job._id)}>Delete</button>
+          <div className="flex justify-evenly">
+            <button className="btn bg-[#7ec6d5] text-[#FFF]">
+              <Link to={`/updatejob/${job._id}`}>Update</Link>
+            </button>
+            <button
+              className="btn bg-[#ff715b] text-[#FFF]"
+              onClick={() => handleDelete(job._id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
       <Helmet>
