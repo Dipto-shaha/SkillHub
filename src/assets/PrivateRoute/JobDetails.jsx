@@ -15,6 +15,8 @@ const JobDetails = () => {
   const [startDate, setStartDate] = useState(new Date());
   const today = new Date();
   const navigate = useNavigate();
+  const dateObject = new Date(deadline);
+
 
   today.setHours(0, 0, 0, 0);
   const handleBid = (e) => {
@@ -97,7 +99,7 @@ const JobDetails = () => {
               />
             </div>
             <div className="flex items-center">
-              <button disabled={user.email == email ? "disabled" : ""} className=" mx-auto mt-5 btn bg-[#ff715b] text-[#FFF]">
+              <button disabled={ ( dateObject < today || user.email == email )? "disabled" : ""} className=" mx-auto mt-5 btn bg-[#ff715b] text-[#FFF]">
                 Bid Now
               </button>
             </div>
