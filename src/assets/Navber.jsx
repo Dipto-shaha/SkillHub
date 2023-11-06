@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContest } from "./Context";
+
+
 
 
 const Navber = () => {
@@ -16,7 +18,7 @@ const Navber = () => {
     }
   return (
     <>
-    <div className={` navbar  bg-[#f0f0ff]`}>
+    <div className={` navbar  bg-[#7ec6d533]`}>
       <div className="navbar-start flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -57,7 +59,9 @@ const Navber = () => {
           </ul>
         </div>
         <img className="w-12 h-8 lg:w-20 lg:h-20 rounded-3xl"src='https://i.ibb.co/WpgYsv0/logo.jpg'></img>
-        <img className="w-12 h-8 lg:w-40 lg:h-20 rounded-3xl" src="https://i.ibb.co/xsDTnD8/logo-Name-Only.png" alt="" />
+        <p className="mx-2 text-4xl font-bold">
+            Skill<span className="text-[#ff715b]">Hub</span>
+          </p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -81,20 +85,18 @@ const Navber = () => {
       <div className="navbar-end">
         {
           user ? 
-          <div className="flex justify-center items-center">
-              <span className="flex justify-center items-center border-2 rounded-xl mr-2 "  >
+          <div className="flex justify-center items-center ">
+              <span className="flex justify-center items-center border-2 p-1 rounded-xl mr-2  border-[#7ec6d5] "  >
               <img className=" rounded-full border-1 h-12 w-14  mx-2 "src={user.photoURL} alt="Image" />
               <p className="mr-2">{user.displayName ? user.displayName:"Name" }</p>
               </span> 
-              <Link className="px-2 py-2 rounded text-[#FFF] bg-[#515474] border-2 " onClick={handleLogout} to={'/'}>Log Out</Link> 
+              <Link className="px-2 py-2 rounded-lg text-[#FFF] bg-[#515474] border-2" onClick={handleLogout} to={'/'}>Log Out</Link> 
           </div>:
           
-          <Link className={` px-2 py-2 mr-2 rounded bg-[#515474] text-[#FFF]  border-2 `} to={'/login'} >Log In</Link>
+          <Link className={` px-2 py-2 mr-2 rounded-lg bg-[#515474] text-[#FFF]  border-2  `} to={'/login'} >Log In</Link>
           
 
         }
-     
-          
         </div>
     </div>
     <ToastContainer

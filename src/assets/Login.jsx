@@ -53,7 +53,7 @@ const Login = () => {
                 </label>
                 </div>
                 <div className="form-control my-1">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn bg-[#ff715b] text-[#FFF]">Login</button>
                 </div>
                 <button onClick={()=>{
                     logInWithGoogle()
@@ -71,7 +71,7 @@ const Login = () => {
                     <div className="mr-5"><img src={'https://i.ibb.co/1qPR4mG/Logo.png'}></img></div>
                     <div>Sign in with Google </div>
             </button>
-                <p className="pt-2">Don&apos;t have an account?<Link className="text-[#7848f4] font-bold ml-1"  to={'/signin'}>Register</Link></p> 
+                <p className="pt-2">Don&apos;t have an account?<Link className="text-[#7ec6d5FF] font-bold ml-1"  to={'/signin'}>Register</Link></p> 
             </form>
             </div>
             </div>

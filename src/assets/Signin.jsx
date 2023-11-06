@@ -95,7 +95,7 @@ const Signin = () => {
                 <input type="password" placeholder="password" name ="password" className="input input-bordered" required />
                 </div>
                 <div className="form-control ">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn bg-[#ff715b] text-[#FFF]">Register</button>
                 </div>
                 <button onClick={()=>{
                     logInWithGoogle()
@@ -113,7 +113,7 @@ const Signin = () => {
                     <div className="mr-5"><img src={'https://i.ibb.co/1qPR4mG/Logo.png'}></img></div>
                     <div>Sign Up with Google </div>
             </button>
-                <p className="text-center">Have an account?<Link className="text-[#7848f4] font-bold ml-1" to={'/login'}>Login</Link></p> 
+                <p className="text-center">Have an account?<Link className="text-[#7ec6d5FF] font-bold ml-1" to={'/login'}>Login</Link></p> 
             </form>
             </div>
             </div>
