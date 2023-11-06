@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
-        <div>
+        <div className="flex flex-col items-center justify-center mt-20">
             <img src="https://i.ibb.co/JqCGBhX/Screenshot-2023-11-04-221935.png" alt="" />
-            <Link to='/'>Home</Link>        
-            </div>
+            <button className="btn px-10 bg-[#007dfe] text-[#FFF]"><Link to='/'>Back to Home</Link> </button>       
+         </div>
     );
 };
 
