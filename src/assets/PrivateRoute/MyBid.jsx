@@ -3,18 +3,20 @@ import { AuthContest } from "../Context";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import { BiSortAZ } from "react-icons/bi";
-import { FaRandom} from "react-icons/fa";
+import { FaRandom } from "react-icons/fa";
 
 const MyBid = () => {
   const [info, setinfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContest);
   const [reload, setReload] = useState(false);
-  const [sortOption,setSortOption]=useState(false);
+  const [sortOption, setSortOption] = useState(false);
   useEffect(() => {
-    let url="";
-    if (sortOption) url=`http://localhost:5000/userbid/?email=${user.email}&sort=sorted`;
-    else url=`http://localhost:5000/userbid/?email=${user.email}`;
+    let url = "";
+    if (sortOption)
+      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}&sort=sorted`;
+    else
+      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -22,20 +24,20 @@ const MyBid = () => {
         console.log(data);
       });
     setLoading(true);
-  }, [reload,sortOption]);
+  }, [reload, sortOption]);
 
   const handleComplete = (id) => {
     const updateInfo = {
       status: "Complete",
     };
-    fetch(`http://localhost:5000/updatebid/${id}`, {
+    fetch(`https://skillhub-server.vercel.app/updatebid/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(updateInfo),
     })
-      .then((res) => res.json()) 
+      .then((res) => res.json())
       .then((result) => {
         console.log(result);
         toast.success("Project Completed Successfully");
@@ -54,9 +56,16 @@ const MyBid = () => {
               <th>Job Title</th>
               <th>Email</th>
               <th>Deadline</th>
-              <th className="flex justify-center items-center">Staus
-              <button className=" ml-2 text-2xl tooltip tooltip-bottom" data-tip={!sortOption? "Sort":"Random"} onClick={()=>{setSortOption(!sortOption)}}>
-                {!sortOption ? <BiSortAZ ></BiSortAZ >: <FaRandom ></FaRandom>}
+              <th className="flex justify-center items-center">
+                Staus
+                <button
+                  className=" ml-2 text-2xl tooltip tooltip-bottom"
+                  data-tip={!sortOption ? "Sort" : "Random"}
+                  onClick={() => {
+                    setSortOption(!sortOption);
+                  }}
+                >
+                  {!sortOption ? <BiSortAZ></BiSortAZ> : <FaRandom></FaRandom>}
                 </button>
               </th>
               <th>Complete</th>
@@ -72,7 +81,7 @@ const MyBid = () => {
                   <td>{item.deadline}</td>
                   <td>{item.status}</td>
                   <td>
-                    {item.status!='Complete' && (
+                    {item.status != "Complete" && (
                       <button
                         disabled={
                           item.status != "In progress" ? "disabled" : ""

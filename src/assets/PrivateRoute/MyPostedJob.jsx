@@ -7,7 +7,7 @@ const MyPostedJob = () => {
   const { user } = useContext(AuthContest);
   const [jobs, setJobs] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:5000/userjob?email=${user.email}`)
+    fetch(`https://skillhub-server.vercel.app/userjob?email=${user.email}`)
       .then((res) => res.json())
       .then((res) => setJobs(res));
   }, []);
@@ -22,7 +22,7 @@ const MyPostedJob = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/jobDelete/${_id}`, {
+        fetch(`https://skillhub-server.vercel.app/jobDelete/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -60,7 +60,7 @@ const MyPostedJob = () => {
           <p>
             <strong>Price Range:</strong> {job.priceRange}
           </p>
-          
+
           <p>
             <strong>Email:</strong> {job.email}
           </p>

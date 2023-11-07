@@ -4,20 +4,22 @@ import "react-tabs/style/react-tabs.css";
 import SingleJob from "./SingleJob";
 import NewsLetter from "./NewsLetter";
 import { CaretRightOutlined } from "@ant-design/icons";
-import { Collapse, theme ,ConfigProvider} from "antd";
+import { Collapse, theme, ConfigProvider } from "antd";
 const getItems = (panelStyle) => [
   {
     key: "1",
     label: "How do I post a job on SkillHub?",
     children: (
       <p className="pl-10">
-        To post a job on SkillHub, simply visit the <span className="font-semibold">Add Jobs</span> page. Provide
-        essential details such as the job title, deadline, and a comprehensive
+        To post a job on SkillHub, simply visit the{" "}
+        <span className="font-semibold">Add Jobs</span> page. Provide essential
+        details such as the job title, deadline, and a comprehensive
         description. Choose the relevant category from the dropdown menu, and
-        set your desired price range. Once you&apos;ve filled in all the necessary
-        information, click the <span className="font-semibold">Add Jobs</span> button to submit your posting. It&apos;s
-        that easy to connect with skilled freelancers and get your project
-        underway
+        set your desired price range. Once you&apos;ve filled in all the
+        necessary information, click the{" "}
+        <span className="font-semibold">Add Jobs</span> button to submit your
+        posting. It&apos;s that easy to connect with skilled freelancers and get
+        your project underway
       </p>
     ),
     style: panelStyle,
@@ -44,8 +46,8 @@ const getItems = (panelStyle) => [
       " Can I request custom project requirements tailored to my specific business needs?",
     children: (
       <p className="pl-10">
-        Absolutely! SkillHub encourages custom project requests that align
-        with your unique business requirements. Our platform allows you to
+        Absolutely! SkillHub encourages custom project requests that align with
+        your unique business requirements. Our platform allows you to
         communicate directly with freelancers, ensuring that your project needs
         are understood and implemented to your satisfaction.
       </p>
@@ -65,10 +67,10 @@ const HomeCategory = () => {
     background: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
     border: "none",
-    fontSize:18
+    fontSize: 18,
   };
   useEffect(() => {
-    fetch("http://localhost:5000/job")
+    fetch("https://skillhub-server.vercel.app/job")
       .then((res) => res.json())
       .then((data) => {
         let newData = data.filter((job) => job.category == "Web Development");
@@ -157,11 +159,11 @@ const HomeCategory = () => {
         }}
         items={getItems(panelStyle)}
       />
-        <ConfigProvider
+      <ConfigProvider
         theme={{
           token: {
-            fontSize:50,
-            headerBg:"#ff715b"
+            fontSize: 50,
+            headerBg: "#ff715b",
           },
         }}
       ></ConfigProvider>

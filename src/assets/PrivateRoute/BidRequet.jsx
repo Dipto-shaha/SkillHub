@@ -9,7 +9,9 @@ const BidRequet = () => {
   const [reload, setReload] = useState(false);
   const { user } = useContext(AuthContest);
   useEffect(() => {
-    fetch(`http://localhost:5000/userbidrequest/?email=${user.email}`)
+    fetch(
+      `https://skillhub-server.vercel.app/userbidrequest/?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setinfo(data);
@@ -29,7 +31,7 @@ const BidRequet = () => {
         status: "Rejected",
       };
     }
-    fetch(`http://localhost:5000/updatebid/${_id}`, {
+    fetch(`https://skillhub-server.vercel.app/updatebid/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -68,21 +70,22 @@ const BidRequet = () => {
                   <td>{item.userEmail}</td>
                   <td>{item.deadline}</td>
                   <td>{item.status}</td>
-                  {
-                    item.status =='Pending' && <td className="flex">
-                    <button
-                      className="mx-2 btn bg-[#42f042] text-[#FFF]"
-                      onClick={() => handleDecision(item._id, true)}
-                    >
-                      Accept
-                    </button>
-                    <button onClick={() => handleDecision(item._id, false)}
-                     className=" btn bg-[#ff715b] text-[#FFF]"
-                    >
-                      Reject
-                    </button>
-                  </td>
-                  }
+                  {item.status == "Pending" && (
+                    <td className="flex">
+                      <button
+                        className="mx-2 btn bg-[#42f042] text-[#FFF]"
+                        onClick={() => handleDecision(item._id, true)}
+                      >
+                        Accept
+                      </button>
+                      <button
+                        onClick={() => handleDecision(item._id, false)}
+                        className=" btn bg-[#ff715b] text-[#FFF]"
+                      >
+                        Reject
+                      </button>
+                    </td>
+                  )}
                 </tr>
               );
             })}
@@ -90,7 +93,7 @@ const BidRequet = () => {
         </table>
       </div>
       <Helmet>
-                <title>SkillHub | Bid Request</title>
+        <title>SkillHub | Bid Request</title>
       </Helmet>
     </div>
   );
