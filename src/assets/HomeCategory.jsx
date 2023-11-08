@@ -70,7 +70,7 @@ const HomeCategory = () => {
     fontSize: 18,
   };
   useEffect(() => {
-    fetch("https://skillhub-server.vercel.app/job")
+    fetch("http://localhost:5000/job")
       .then((res) => res.json())
       .then((data) => {
         let newData = data.filter((job) => job.category == "Web Development");

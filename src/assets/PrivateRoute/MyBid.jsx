@@ -14,10 +14,9 @@ const MyBid = () => {
   useEffect(() => {
     let url = "";
     if (sortOption)
-      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}&sort=sorted`;
-    else
-      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}`;
-    fetch(url)
+      url = `http://localhost:5000/userbid/?email=${user.email}&sort=sorted`;
+    else url = `http://localhost:5000/userbid/?email=${user.email}`;
+    fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         setinfo(data);
@@ -30,11 +29,12 @@ const MyBid = () => {
     const updateInfo = {
       status: "Complete",
     };
-    fetch(`https://skillhub-server.vercel.app/updatebid/${id}`, {
+    fetch(`http://localhost:5000/updatebid/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include" ,
       body: JSON.stringify(updateInfo),
     })
       .then((res) => res.json())

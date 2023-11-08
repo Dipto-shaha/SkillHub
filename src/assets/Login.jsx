@@ -22,7 +22,7 @@ const Login = () => {
                 console.log(res);
                 toast.success("Login Successfully");
                 console.log("Location is get");
-                //console.log(res.user.email)
+                console.log(res.user.email)
                 axios.post('http://localhost:5000/jwt', res.user.email,{withCredentials:true})
                 .then(res => console.log(res.data))
                 .catch(err=> console.error(err))

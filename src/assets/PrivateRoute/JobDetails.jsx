@@ -35,11 +35,12 @@ const JobDetails = () => {
       status: "Pending",
     };
     console.log(offer);
-    fetch("https://skillhub-server.vercel.app/bidjob", {
+    fetch("http://localhost:5000/bidjob", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include" ,
       body: JSON.stringify(offer),
     })
       .then((res) => res.json())

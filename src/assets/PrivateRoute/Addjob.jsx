@@ -38,11 +38,12 @@ const Addjob = () => {
       deadline,
     };
     console.log(job);
-    fetch("https://skillhub-server.vercel.app/addjob", {
+    fetch("http://localhost:5000/addjob", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
+       credentials: "include" ,
       body: JSON.stringify(job),
     })
       .then((res) => res.json())
@@ -50,7 +51,10 @@ const Addjob = () => {
         console.log(result);
         toast.success("Job Added Successfully");
         navigate("/myjob");
-      });
+      })
+      .catch(error=> {
+        console.log(error);
+      })
   };
   return (
     <div className="bg-[#f6f9fe] lg:mx-20 mx-5 py-10 my-10 lg:px-20 px-10 rounded-lg">
