@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "./Firebase/firbase.config";
 import axios from "axios";
-//import axios from "axios";
 
 export const AuthContest= createContext(null);
 
@@ -33,34 +32,32 @@ const Context = ({children}) => {
         setLoading(true);
         return signOut(auth); 
     }
-    const logOutByServer =()=>{
-        axios.post('http://localhost:5000/logout',user,{withCredentials:true})
-            .then(res => console.log(res.data))
-            .catch(error => console.log(error))
-    }
     useEffect( ()=>{
         const unSubscribe = onAuthStateChanged(auth,currentUser =>{
             setUser(currentUser);
             console.log('User in Auth Change');
-            // if(currentUser){
-            //     console.log("I am Here whats wrong",currentUser.user.email)
-            //     axios.post('http://localhost:5000/jwt',currentUser.user.email,{withCredentials:true})
-            //     .then(res => console.log(res.data))
-            //     .catch(error => console.log(error))
-            // }
-            // else
-            // {
-            //     console.log('Here')
-            //     axios.post('http://localhost:5000/logout',{withCredentials:true})
-            //     .then(res => console.log(res.data))
-            //     .catch(error => console.log(error))
-            // }
+            if(currentUser){
+                console.log("User is present");
+                axios.post('http://localhost:5000/jwt',currentUser ,{withCredentials:true})
+                .then(res => console.log(res.data))
+                .catch(err=> {
+                    console.error(err);
+                    logOut();
+                })
+            }
+            else
+            {
+                console.log('User is not present')
+                axios.post('http://localhost:5000/logout',user,{withCredentials:true})
+                    .then(res => console.log(res.data))
+                    .catch(error => console.log(error))
+            }
             setLoading(false);
         })
         return () => {unSubscribe()};
     }
     ,[]);
-    const authInfo ={user, createUser, logOut,logIn ,logInWithGoogle,loading,updateUserProfile,logOutByServer};
+    const authInfo ={user, createUser, logOut,logIn ,logInWithGoogle,loading,updateUserProfile};
 
     return (
         <AuthContest.Provider  value ={authInfo}>

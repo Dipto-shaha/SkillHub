@@ -8,12 +8,11 @@ import { AuthContest } from "./Context";
 
 
 const Navber = () => {
-  const {user,logOut,logOutByServer} =useContext(AuthContest); 
+  const {user,logOut} =useContext(AuthContest); 
     const handleLogout =()=>{
         logOut()
         .then(res => {console.log(res);
             toast.success("Log Out Successfully");
-            logOutByServer();
     })
     .catch(error => {console.log(error);})
     }

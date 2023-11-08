@@ -5,7 +5,6 @@ import { AuthContest } from "./Context";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
-import axios from "axios";
 export const ProfileContext= createContext(null);
 
 const Signin = () => {
@@ -103,9 +102,6 @@ const Signin = () => {
                     .then(res=> {
                         console.log(res);
                         toast.success("Login Successful")
-                        axios.post('http://localhost:5000/jwt', res.user.email,{withCredentials:true})
-                        .then(res => console.log(res.data))
-                        .catch(err=> console.error(err))
                         navigate('/');
                     })
                     .catch(error => {

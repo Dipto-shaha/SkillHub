@@ -23,7 +23,7 @@ const MyBid = () => {
         console.log(data);
       });
     setLoading(true);
-  }, [reload, sortOption]);
+  }, [user,reload, sortOption]);
 
   const handleComplete = (id) => {
     const updateInfo = {

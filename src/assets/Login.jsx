@@ -5,7 +5,6 @@ import { AuthContest } from "./Context";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
-import axios from "axios";
 
 const Login = () => {
     const {logIn,logInWithGoogle} =useContext(AuthContest);
@@ -23,9 +22,6 @@ const Login = () => {
                 toast.success("Login Successfully");
                 console.log("Location is get");
                 console.log(res.user.email)
-                axios.post('http://localhost:5000/jwt', res.user.email,{withCredentials:true})
-                .then(res => console.log(res.data))
-                .catch(err=> console.error(err))
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
@@ -65,9 +61,6 @@ const Login = () => {
                     .then(res=> {
                         console.log(res);
                         toast.success("Login Successful")
-                        axios.post('http://localhost:5000/jwt', res.user.email,{withCredentials:true})
-                        .then(res => console.log(res.data))
-                        .catch(err=> console.error(err))
                         navigate(location?.state ? location.state : '/');
                     })
                     .catch(error => {
