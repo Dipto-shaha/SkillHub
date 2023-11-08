@@ -5,14 +5,18 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 const MyPostedJob = () => {
-  const { user  } = useContext(AuthContest);
+  const { user } = useContext(AuthContest);
   const [jobs, setJobs] = useState(null);
   useEffect(() => {
     console.log("Hello Whats wrong");
     axios
-      .post(`http://localhost:5000/userjob?email=${user.email}`, user, {
-        withCredentials: true,
-      })
+      .post(
+        `https://skillhub-server.vercel.app/userjob?email=${user.email}`,
+        user,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => setJobs(res.data))
       .catch((error) => console.log(error));
   }, [user]);
@@ -27,7 +31,7 @@ const MyPostedJob = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/jobDelete/${_id}`, {
+        fetch(`https://skillhub-server.vercel.app/jobDelete/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -69,7 +73,7 @@ const MyPostedJob = () => {
           <p>
             <strong>Email:</strong> {job.email}
           </p>
-          <div className="flex justify-evenly">
+          <div className="flex justify-evenly pt-5">
             <button className="btn bg-[#7ec6d5] text-[#FFF]">
               <Link to={`/updatejob/${job._id}`}>Update</Link>
             </button>

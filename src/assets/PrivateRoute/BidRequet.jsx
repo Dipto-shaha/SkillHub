@@ -11,7 +11,10 @@ const BidRequet = () => {
   const [reload, setReload] = useState(false);
   const { user } = useContext(AuthContest);
   useEffect(() => {
-    fetch(`http://localhost:5000/userbidrequest/?email=${user.email}`,{ credentials: "include" })
+    fetch(
+      `https://skillhub-server.vercel.app/userbidrequest/?email=${user.email}`,
+      { credentials: "include" }
+    )
       .then((res) => res.json())
       .then((data) => {
         setinfo(data);
@@ -30,7 +33,7 @@ const BidRequet = () => {
         status: "Rejected",
       };
     }
-    fetch(`http://localhost:5000/updatebid/${_id}`, {
+    fetch(`https://skillhub-server.vercel.app/updatebid/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

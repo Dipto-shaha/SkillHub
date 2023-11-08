@@ -70,7 +70,7 @@ const HomeCategory = () => {
     fontSize: 18,
   };
   useEffect(() => {
-    fetch("http://localhost:5000/job")
+    fetch("https://skillhub-server.vercel.app/job")
       .then((res) => res.json())
       .then((data) => {
         let newData = data.filter((job) => job.category == "Web Development");
@@ -82,13 +82,6 @@ const HomeCategory = () => {
         setLoading(true);
       });
   }, []);
-  if (!loading)
-    return (
-      <>
-        <span className="loading loading-dots loading-md"></span>
-        <span className="loading loading-dots loading-lg"></span>
-      </>
-    );
   return (
     <>
       <div className="flex mb-10 flex-col-reverse lg:flex-row">
@@ -116,7 +109,7 @@ const HomeCategory = () => {
           />
         </div>
       </div>
-      <Tabs>
+      {(loading) ?  <Tabs>
         <TabList>
           <Tab>Web Development</Tab>
           <Tab>Digital Marketing</Tab>
@@ -143,7 +136,11 @@ const HomeCategory = () => {
             })}
           </div>
         </TabPanel>
-      </Tabs>
+      </Tabs> 
+      : <div className="flex justify-center items-center text-7xl h-80">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+      }
       <NewsLetter></NewsLetter>
       <p className="text-center text-3xl font-semibold my-5">
         Frequently Asked Questions

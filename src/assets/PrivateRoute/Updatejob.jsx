@@ -2,7 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
-import {  useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./formDesign.css";
 
@@ -48,12 +48,12 @@ const Updatejob = () => {
       deadline,
     };
     console.log(job);
-    fetch(`http://localhost:5000/updatejob/${_id}`, {
+    fetch(`https://skillhub-server.vercel.app/updatejob/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      credentials: "include" ,
+      credentials: "include",
       body: JSON.stringify(job),
     })
       .then((res) => res.json())
@@ -62,9 +62,9 @@ const Updatejob = () => {
         toast.success("Job Updated Successfully");
         navigate("/myjob");
       })
-      .catch(e =>{
+      .catch((e) => {
         console.log(e);
-      })
+      });
   };
   return (
     <div className="bg-[#f6f9fe] lg:mx-20 mx-10 py-10 my-10 lg:px-20 px-10 rounded-lg">

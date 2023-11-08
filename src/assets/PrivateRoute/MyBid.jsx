@@ -14,8 +14,9 @@ const MyBid = () => {
   useEffect(() => {
     let url = "";
     if (sortOption)
-      url = `http://localhost:5000/userbid/?email=${user.email}&sort=sorted`;
-    else url = `http://localhost:5000/userbid/?email=${user.email}`;
+      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}&sort=sorted`;
+    else
+      url = `https://skillhub-server.vercel.app/userbid/?email=${user.email}`;
     fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
@@ -23,18 +24,18 @@ const MyBid = () => {
         console.log(data);
       });
     setLoading(true);
-  }, [user,reload, sortOption]);
+  }, [user, reload, sortOption]);
 
   const handleComplete = (id) => {
     const updateInfo = {
       status: "Complete",
     };
-    fetch(`http://localhost:5000/updatebid/${id}`, {
+    fetch(`https://skillhub-server.vercel.app/updatebid/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      credentials: "include" ,
+      credentials: "include",
       body: JSON.stringify(updateInfo),
     })
       .then((res) => res.json())

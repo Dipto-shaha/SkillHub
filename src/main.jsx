@@ -74,7 +74,8 @@ const router = createBrowserRouter([
             <JobDetails></JobDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://skillhub-server.vercel.app/job/${params.id}`),
       },
       {
         path: "/updatejob/:id",
@@ -83,7 +84,8 @@ const router = createBrowserRouter([
             <Updatejob></Updatejob>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://skillhub-server.vercel.app/job/${params.id}`),
       },
     ],
   },
