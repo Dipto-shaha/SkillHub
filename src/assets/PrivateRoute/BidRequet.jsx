@@ -15,7 +15,7 @@ const BidRequet = () => {
       `https://skillhub-server.vercel.app/userbidrequest/?email=${user.email}`,
       { credentials: "include" }
     )
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((data) => {
         setinfo(data);
         console.log(data);
@@ -52,7 +52,7 @@ const BidRequet = () => {
     return <span className="loading loading-dots loading-lg"></span>;
   return (
     <div>
-      <div className="overflow-x-auto mb-20 mh">
+      <div className="overflow-x-auto ">
         <table className="table border border-[#7ec6d5] rounded-xl">
           {/* head */}
           <thead>
