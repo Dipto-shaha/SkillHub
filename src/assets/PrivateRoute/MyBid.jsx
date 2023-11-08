@@ -49,8 +49,8 @@ const MyBid = () => {
     return <span className="loading loading-dots loading-lg"></span>;
   return (
     <div>
-      <div className="overflow-x-auto">
-        <table className="table border rounded-lg">
+      <div className="overflow-x-auto mb-20 ">
+        <table className="table border border-[#7ec6d5] rounded-xl">
           {/* head */}
           <thead>
             <tr>

@@ -52,7 +52,7 @@ const BidRequet = () => {
     return <span className="loading loading-dots loading-lg"></span>;
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mb-20 mh">
         <table className="table border border-[#7ec6d5] rounded-xl">
           {/* head */}
           <thead>

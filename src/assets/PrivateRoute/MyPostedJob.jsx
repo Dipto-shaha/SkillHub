@@ -54,7 +54,8 @@ const MyPostedJob = () => {
       </div>
     );
   }
-  return (
+  return (<>
+    { jobs.length>0?
     <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 rounded-lg">
       {jobs.map((job, index) => (
         <div key={index} className="bg-[#f6f9fe] p-10 space-y-2">
@@ -89,7 +90,14 @@ const MyPostedJob = () => {
       <Helmet>
         <title>SkillHub | My Posted Job</title>
       </Helmet>
-    </div>
+    </div>:
+    <div>
+          <div className="mx-auto w-1/3">
+          <img className="w-full" src="https://i.ibb.co/vdpPPw3/images.jpg" alt="" />
+          </div>
+        <p className="text-center text-2xl lg:text-5xl font-semibold">You don&apos;t make any job post yet</p>
+        </div>
+      }</>
   );
 };
 
